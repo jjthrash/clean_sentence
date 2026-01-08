@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 input = gets
-exit if input.nil?
 
 sentence = input.strip
+exit if sentence.nil? || sentence.empty?
 
 # Find the last occurrence of exclamation or question mark
 last_exclamation = sentence.rindex('!')

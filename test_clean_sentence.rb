@@ -7,6 +7,14 @@ class TestCleanSentence < Minitest::Test
     `echo #{input.inspect} | ruby clean_sentence.rb`.chomp
   end
 
+  def test_empty_input
+    assert_equal "", run_clean_sentence("")
+  end
+
+  def test_basically_empty_input
+    assert_equal "", run_clean_sentence("  ")
+  end
+
   def test_basic_sentence_without_punctuation
     assert_equal "Hello world.", run_clean_sentence("hello world")
   end
