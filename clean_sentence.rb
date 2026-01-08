@@ -38,6 +38,9 @@ end
 # Remove trailing commas
 sentence = sentence.sub(/,+\z/, '')
 
+# Exit if sentence is empty after cleaning
+exit if sentence.empty?
+
 # Add appropriate ending punctuation
 if use_exclamation
   sentence += '!'

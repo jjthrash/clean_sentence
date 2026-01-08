@@ -15,6 +15,13 @@ class TestCleanSentence < Minitest::Test
     assert_equal "", run_clean_sentence("  ")
   end
 
+  def test_only_punctuation
+    assert_equal "", run_clean_sentence(",")
+    assert_equal "", run_clean_sentence("?")
+    assert_equal "", run_clean_sentence(".")
+    assert_equal "", run_clean_sentence("!")
+  end
+
   def test_basic_sentence_without_punctuation
     assert_equal "Hello world.", run_clean_sentence("hello world")
   end
