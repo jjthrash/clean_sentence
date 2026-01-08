@@ -1,12 +1,3 @@
-# A sentence is defined as a full input from STDIN.
-# Trim input for whitespace
-# If you find an exclamation point or question mark, add it at the end. Remove it from the middle of the sentence.
-# Remove periods from the middle of the sentence.
-# Downcase words in the middle of the sentence.
-# Remove commas at the end of input
-# If there's no sentence-ending punctuation at the end, add a period.
-# Print results to STDOUT
-
 input = gets
 exit if input.nil?
 
