@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 input = gets
 exit if input.nil?
 
