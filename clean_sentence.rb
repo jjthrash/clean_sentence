@@ -1,5 +1,16 @@
 #!/usr/bin/env ruby
 
+# Words that should always be capitalized (case-insensitive match)
+SPECIAL_CASE_WORDS = %w(
+  I
+  Sarah
+  Chip
+  Emma
+  Jason
+  Martin
+  January February March April May June July August September October November December
+)
+
 input = gets
 
 sentence = input.strip
@@ -33,6 +44,11 @@ sentence = sentence.gsub(/[!?.]/, '')
 sentence = sentence.strip
 if sentence.length > 0
   sentence = sentence[0].upcase + sentence[1..].downcase
+end
+
+# Restore special-case words to their proper capitalization
+SPECIAL_CASE_WORDS.each do |word|
+  sentence.gsub!(/\b#{Regexp.escape(word)}\b/i, word)
 end
 
 # Remove trailing commas

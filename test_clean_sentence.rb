@@ -97,4 +97,20 @@ class TestCleanSentence < Minitest::Test
   def test_mixed_punctuation_last_wins
     assert_equal "What really no way!", run_clean_sentence("what? really! no way.")
   end
+
+  # Special case words
+  def test_pronoun_i_preserved
+    assert_equal "I am happy.", run_clean_sentence("i am happy")
+    assert_equal "Hello I am here.", run_clean_sentence("hello i am here")
+  end
+
+  def test_names_preserved
+    assert_equal "Sarah is here.", run_clean_sentence("sarah is here")
+    assert_equal "Hello Chip.", run_clean_sentence("hello chip")
+    assert_equal "Hi Emma.", run_clean_sentence("hi emma")
+  end
+
+  def test_multiple_special_cases
+    assert_equal "I saw Sarah and Chip.", run_clean_sentence("i saw sarah and chip")
+  end
 end
