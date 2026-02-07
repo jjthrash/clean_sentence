@@ -113,4 +113,8 @@ class TestCleanSentence < Minitest::Test
   def test_multiple_special_cases
     assert_equal "I saw Sarah and Chip.", run_clean_sentence("i saw sarah and chip")
   end
+
+  def test_double_commas
+    assert_equal "How, modifiable, modulatable our patterns.", run_clean_sentence("How,, modifiable, modulatable. Our patterns.")
+  end
 end

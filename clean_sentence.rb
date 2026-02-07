@@ -51,6 +51,9 @@ SPECIAL_CASE_WORDS.each do |word|
   sentence.gsub!(/\b#{Regexp.escape(word)}\b/i, word)
 end
 
+# Remove double commas
+sentence.gsub!(/,{2,}/, ',')
+
 # Remove trailing commas
 sentence = sentence.sub(/,+\z/, '')
 
