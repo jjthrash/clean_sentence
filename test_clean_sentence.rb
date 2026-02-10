@@ -117,4 +117,8 @@ class TestCleanSentence < Minitest::Test
   def test_double_commas
     assert_equal "How, modifiable, modulatable our patterns.", run_clean_sentence("How,, modifiable, modulatable. Our patterns.")
   end
+
+  def test_leave_trailing_line_numbers_alone
+    assert_equal "I saw Sarah and Chip. [1]", run_clean_sentence("i saw sarah and chip [1]")
+  end
 end

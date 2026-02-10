@@ -60,6 +60,13 @@ sentence = sentence.sub(/,+\z/, '')
 # Exit if sentence is empty after cleaning
 exit if sentence.empty?
 
+# Extract trailing line number if present
+trailing_line_number = nil
+if sentence =~ / \[\d+\]$/
+  trailing_line_number = sentence[/ \[\d+\]$/]
+  sentence = sentence.sub(/ \[\d+\]$/, '')
+end
+
 # Add appropriate ending punctuation
 if use_exclamation
   sentence += '!'
@@ -67,6 +74,11 @@ elsif use_question
   sentence += '?'
 else
   sentence += '.'
+end
+
+# Re-append trailing line number if it was present
+if trailing_line_number
+  sentence += trailing_line_number
 end
 
 puts sentence
