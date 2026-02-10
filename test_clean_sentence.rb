@@ -121,4 +121,8 @@ class TestCleanSentence < Minitest::Test
   def test_leave_trailing_line_numbers_alone
     assert_equal "I saw Sarah and Chip. [1]", run_clean_sentence("i saw sarah and chip [1]")
   end
+
+  def test_comma_before_period_with_line_number
+    assert_equal "At the very least, we should not demand that art fit a reductionist view in some way. [53]", run_clean_sentence("At the very least, we should not demand that art fit a reductionist view in some way,. [53]")
+  end
 end

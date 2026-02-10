@@ -16,6 +16,13 @@ input = gets
 sentence = input.strip
 exit if sentence.nil? || sentence.empty?
 
+# Extract trailing line number if present (before other processing)
+trailing_line_number = nil
+if sentence =~ / \[\d+\]$/
+  trailing_line_number = sentence[/ \[\d+\]$/]
+  sentence = sentence.sub(/ \[\d+\]$/, '')
+end
+
 # Find the last occurrence of exclamation or question mark
 last_exclamation = sentence.rindex('!')
 last_question = sentence.rindex('?')
@@ -59,13 +66,6 @@ sentence = sentence.sub(/,+\z/, '')
 
 # Exit if sentence is empty after cleaning
 exit if sentence.empty?
-
-# Extract trailing line number if present
-trailing_line_number = nil
-if sentence =~ / \[\d+\]$/
-  trailing_line_number = sentence[/ \[\d+\]$/]
-  sentence = sentence.sub(/ \[\d+\]$/, '')
-end
 
 # Add appropriate ending punctuation
 if use_exclamation
