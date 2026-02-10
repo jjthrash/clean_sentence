@@ -125,4 +125,8 @@ class TestCleanSentence < Minitest::Test
   def test_comma_before_period_with_line_number
     assert_equal "At the very least, we should not demand that art fit a reductionist view in some way. [53]", run_clean_sentence("At the very least, we should not demand that art fit a reductionist view in some way,. [53]")
   end
+
+  def test_respect_markdown_bolding
+    assert_equal "**But** belief is a function of the mind. [13]", run_clean_sentence("**but** belief is a function of the mind. [13]")
+  end
 end

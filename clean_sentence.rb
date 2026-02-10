@@ -50,7 +50,15 @@ sentence = sentence.gsub(/[!?.]/, '')
 # Downcase words in the middle of the sentence (capitalize first letter)
 sentence = sentence.strip
 if sentence.length > 0
-  sentence = sentence[0].upcase + sentence[1..].downcase
+  # Find the first alphabetic character and capitalize it
+  if sentence =~ /[a-z]/i
+    first_letter_index = sentence.index(/[a-z]/i)
+    sentence = sentence[0...first_letter_index] +
+               sentence[first_letter_index].upcase +
+               sentence[first_letter_index+1..].downcase
+  else
+    sentence = sentence.downcase
+  end
 end
 
 # Restore special-case words to their proper capitalization
