@@ -8,7 +8,6 @@ SPECIAL_CASE_WORDS = %w(
   Emma
   Jason
   Martin
-  January February March April May June July August September October November December
 )
 
 input = gets
