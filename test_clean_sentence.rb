@@ -129,4 +129,8 @@ class TestCleanSentence < Minitest::Test
   def test_respect_markdown_bolding
     assert_equal "**But** belief is a function of the mind. [13]", run_clean_sentence("**but** belief is a function of the mind. [13]")
   end
+
+  def test_respect_trailing_obsidian_block_tag
+    assert_equal "**But** belief is a function of the mind. [13] ^asdf1", run_clean_sentence("**but** belief is a function of the mind. [13] ^asdf1")
+  end
 end
