@@ -15,10 +15,10 @@ input = gets
 sentence = input.strip
 exit if sentence.nil? || sentence.empty?
 
-# Extract trailing block tag if present (e.g. " ^asdf1")
-trailing_block_tag = nil
+# Extract trailing block identifier if present (e.g. " ^asdf1")
+trailing_block_id = nil
 if sentence =~ / \^[A-Za-z0-9-]+$/
-  trailing_block_tag = sentence[/ \^[A-Za-z0-9-]+$/]
+  trailing_block_id = sentence[/ \^[A-Za-z0-9-]+$/]
   sentence = sentence.sub(/ \^[A-Za-z0-9-]+$/, '')
 end
 
@@ -95,9 +95,9 @@ if trailing_line_number
   sentence += trailing_line_number
 end
 
-# Re-append trailing block tag if it was present
-if trailing_block_tag
-  sentence += trailing_block_tag
+# Re-append trailing block identifier if it was present
+if trailing_block_id
+  sentence += trailing_block_id
 end
 
 puts sentence
